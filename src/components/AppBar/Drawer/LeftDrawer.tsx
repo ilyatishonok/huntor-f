@@ -52,6 +52,7 @@ const styles = (theme: Theme) => createStyles({
 
 interface LeftDrawerProps extends WithStyles<typeof styles> {
     path: string;
+    isAuthenticated: boolean;
     isDrawerOpen: boolean;
     onDrawerClose: () => void;
 }

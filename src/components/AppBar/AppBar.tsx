@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
-import LeftDrawerContainer from '../../containers/LeftDrawerContainer';
+import LeftDrawer from './Drawer';
 const drawerWidth = 200;
 
 const styles = (theme: Theme) => createStyles({
@@ -40,7 +40,8 @@ interface AppBarState {
 }
 
 interface AppBarProps extends WithStyles<typeof styles> {
-
+    path: string,
+    isAuthenticated: boolean;
 }
 
 class NAppBar extends Component<AppBarProps, AppBarState> {
@@ -60,6 +61,10 @@ class NAppBar extends Component<AppBarProps, AppBarState> {
 
     render() {
         const { classes } = this.props;
+
+        if (!this.props.isAuthenticated) {
+            return null;
+        }
 
         return (
             <React.Fragment>
@@ -84,7 +89,12 @@ class NAppBar extends Component<AppBarProps, AppBarState> {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <LeftDrawerContainer isDrawerOpen={this.state.isDrawerOpen} onDrawerClose={this.handleDrawerState} />
+                <LeftDrawer
+                    isDrawerOpen={this.state.isDrawerOpen}
+                    onDrawerClose={this.handleDrawerState} 
+                    path={this.props.path}
+                    isAuthenticated={this.props.isAuthenticated}
+                />
             </React.Fragment>
         );
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
-import Routes from '../Routes/Routes';
+import Routes from '../../containers/Routes';
 import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import deepPurple from '@material-ui/core/colors/deepPurple';
@@ -36,7 +36,7 @@ const App = () => (
         <MuiThemeProvider theme={theme}>
             <GlobalStyle />
             <ConnectedRouter history={history}>
-                <Routes authenticated={true} role="student" />
+                <Routes />
             </ConnectedRouter>
         </MuiThemeProvider>
     </Provider>

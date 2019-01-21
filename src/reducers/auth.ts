@@ -1,11 +1,9 @@
 import { Action } from 'redux';
-
-export interface AuthState {
-    role: string;
-}
+import { AuthState } from '../store/types/auth';
 
 const initialState = {
-    role: 'tutor',
+    token: localStorage.getItem('token') || '',
+    refreshToken: localStorage.getItem('refreshToken') || '',
 }
 
 const authReducer = (state: AuthState = initialState, action: Action) => {

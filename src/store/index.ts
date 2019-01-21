@@ -2,12 +2,14 @@ import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
-import createRootReducer from '../reducers';
+import { createRootReducer, createAllReducers } from '../reducers';
 
 export const history = createBrowserHistory();
 
+const rootReducer = createRootReducer(createAllReducers(history));
+
 const store = createStore(
-    createRootReducer(history),
+    rootReducer,
     applyMiddleware(thunk, logger)
 );
 

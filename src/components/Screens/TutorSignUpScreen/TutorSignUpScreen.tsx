@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import LoginForm from '../../../containers/Forms/SignInForm';
+import TutorSignUpForm from '../../../containers/Forms/SignUpForm';
 
-export const LoginContainer = styled.div`
+export const SignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,19 +11,19 @@ export const LoginContainer = styled.div`
 `;
 
 export const Paper = styled.div`
-    width: 400px;
+    width: 500px;
     padding: 20px;
     border-radius: 10px;
     border: 1px solid black;
     box-shadow: 0 0 10px black;
 `;
 
-const LoginScreen = () => (
-    <LoginContainer>
+const TutorSignUpScreen = () => (
+    <SignUpContainer>
         <Paper>
-            <LoginForm />
+            <TutorSignUpForm />
         </Paper>
-    </LoginContainer>
+    </SignUpContainer>
 );
 
-export default LoginScreen;
+export default TutorSignUpScreen;
