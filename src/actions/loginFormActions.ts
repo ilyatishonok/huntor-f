@@ -46,16 +46,9 @@ export const onFormSubmit = (values: SignInFormValues, bag: FormikBag<SignInForm
             localStorage.setItem('token', response.token);
             localStorage.setItem('refreshToken', response.refreshToken);
             bag.setSubmitting(false);
-            bag.props.setUser({
-                id: 'id',
-                role: 'student',
-                email: 'email',
-                firstname: 'firstnmae',
-                lastname: 'lastname',
-                isAdmin: false,
-            });
-
-            bag.props.redirect('/admin');
+            bag.props.authenticateUser(response.token, response.refreshToken);
+            bag.props.setAppState(false);
+            bag.props.loadApp();
         }).catch(() => {
             bag.setSubmitting(false);
             bag.setError('Login failed.');

@@ -1,20 +1,19 @@
 import { combineReducers, Reducer } from 'redux';
-import { Action } from 'redux';
 import { History } from 'history';
 import { reducer as formReducer, FormState } from 'redux-form';
 import { connectRouter, RouterState } from 'connected-react-router';
-import tutorsReducer from './tutors';
-import authReducer from './auth';
-import subjectsReducer from './subjects';
 import educationReducer from './education';
-import appReducer from './app';
+import authReducer, { AuthState } from './auth';
+import appReducer, { AppState } from './app';
+import calendarBookingReducer, { CalendarBookingState } from './calendarBooking';
+import calendarReducer, { CalendarState } from './calendar';
 import userReducer from './user';
-import { TutorsState } from '../store/types/tutors';
-import { SubjectsState } from '../store/types/subjects';
 import { UserState } from '../store/types/user';
-import { AuthState } from '../store/types/auth';
-import { AppState } from '../store/types/app';
 import { EducationsState } from '../store/types/education';
+import tutorsReducer, { TutorsState } from './tutors';
+//import bookingsReducer, { BookingsState } from './bookings';
+import entitiesReducer, { EntitiesState } from './entities/entities';
+import requestsReducer, { RequestsState } from './requests';
 
 export interface RootState {
     app: AppState;
@@ -22,9 +21,13 @@ export interface RootState {
     form: FormState;
     auth: AuthState;
     tutors: TutorsState;
-    subjects: SubjectsState;
-    user: UserState,
-    educations: EducationsState,
+    user: UserState;
+    educations: EducationsState;
+    //bookings: BookingsState;
+    calendarBooking: CalendarBookingState;
+    calendar: CalendarState;
+    entities: EntitiesState;
+    requests: RequestsState;
 }
 
 export const createAllReducers = (history: History) => combineReducers({
@@ -33,9 +36,12 @@ export const createAllReducers = (history: History) => combineReducers({
     form: formReducer,
     auth: authReducer,
     tutors: tutorsReducer,
-    subjects: subjectsReducer,
     educations: educationReducer,
     user: userReducer,
+    calendarBooking: calendarBookingReducer,
+    calendar: calendarReducer,
+    entities: entitiesReducer,
+    requests: requestsReducer,
 });
 
 export const createRootReducer = (allReducers: Reducer) => {

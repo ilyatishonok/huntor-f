@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
     }
 
+    body {
+        background-image: linear-gradient(to top right, #A62026 0%, #4E4480 100%);
+    }
+
     #root {
         display: flex;
         height: 100%;

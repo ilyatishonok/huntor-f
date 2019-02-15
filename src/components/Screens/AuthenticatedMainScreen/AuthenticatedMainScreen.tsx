@@ -1,7 +1,16 @@
 import React, { ReactNode } from 'react';
+import TutorsList from '../../../containers/TutorsList';
 
-const AuthenticatedMainScreen = () => (
-    <div>Hello world</div>
-);
+interface AuthenticatedMainScreenProps {
+    role: string;
+}
 
-export default AuthenticatedMainScreen
+const AuthenticatedMainScreen = ({ role }: AuthenticatedMainScreenProps) => {
+    if (role === 'student') {
+        return <TutorsList />
+    }
+
+    return null;
+}
+
+export default AuthenticatedMainScreen;

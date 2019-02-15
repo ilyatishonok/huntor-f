@@ -1,0 +1,285 @@
+.container {
+    display: inline-block;
+    font-size: 1rem;
+    outline: none;
+    margin: 20px;
+    box-shadow: 0 0 10px black;
+    background: rebeccapurple;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: white;
+    transition: all 3s 1s;
+}
+  
+.wrapper {
+    position: relative;
+    flex-direction: row;
+    padding-bottom: 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+  
+.months {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    outline: none;
+    width: 100%;
+}
+
+.month {
+    width: 100%;
+    display: table;
+    margin: 0 1em;
+    margin-top: 1em;
+    border-spacing: 0;
+    border-collapse: collapse;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navButtonPrev, .navButtonNext {
+    position: absolute;
+    top: 1em;
+    right: 1.5em;
+    left: auto;
+
+    display: inline-block;
+    margin-top: 2px;
+    width: 1.25em;
+    height: 1.25em;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    color: white;
+    cursor: pointer;
+}
+
+.navButtonPrev:hover, .navButtonNext:hover {
+    opacity: 0.8;
+}
+
+.navButtonPrev {
+    margin-right: 1.5em;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAVVJREFUWAnN2G0KgjAYwPHpGfRkaZeqvgQaK+hY3SUHrk1YzNLay/OiEFp92I+/Mp2F2Mh2lLISWnflFjzH263RQjzMZ19wgs73ez0o1WmtW+dgA01VxrE3p6l2GLsnBy1VYQOtVSEH/atCCgqpQgKKqYIOiq2CBkqtggLKqQIKgqgCBjpJ2Y5CdJ+zrT9A7HHSTA1dxUdHgzCqJIEwq0SDsKsEg6iqBIEoq/wEcVRZBXFV+QJxV5mBtlDFB5VjYTaGZ2sf4R9PM7U9ZU+lLuaetPP/5Die3ToO1+u+MKtHs06qODB2zBnI/jBd4MPQm1VkY79Tb18gB+C62FdBFsZR6yeIo1YQiLJWMIiqVjQIu1YSCLNWFgijVjYIuhYYCKoWKAiiFgoopxYaKLUWOii2FgkophYp6F3r42W5A9s9OcgNvva8xQaysKXlFytoqdYmQH6tF3toSUo0INq9AAAAAElFTkSuQmCC');
+}
+
+.navButtonNext {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAXRJREFUWAnN119ugjAcwPHWzJ1gnmxzB/BBE0n24m4xfNkTaOL7wOtsl3AXMMb+Vjaa1BG00N8fSEibPpAP3xAKKs2yjzTPH9RAjhEo9WzPr/Vm8zgE0+gXATAxxuxtqeJ9t5tIwv5AtQAApsfT6TPdbp+kUBcgVwvO51KqVhMkXKsVJFXrOkigVhCIs1Y4iKlWZxB1rX4gwlpRIIpa8SDkWmggrFq4IIRaJKCYWnSgnrXIQV1r8YD+1Vrn+bReagysIFfLABRt31v8oBu1xEBttfRbltmfjgEcWh9snUS2kNdBK6WN1vrOWxObWsz+fjxevsxmB1GQDfINWiev83nhaoiB/CoOU438oPrhXS0WpQ9xc1ZQWxWHqUYe0I0qrKCQKjygDlXIQV2r0IF6ViEBxVTBBSFUQQNhVYkHIVeJAtkNsbQ7c1LtzP6FsObhb2rCKv7NBIGoq4SDmKoEgTirXAcJVGkFSVVpgoSrXICGUMUH/QBZNSUy5XWUhwAAAABJRU5ErkJggg==');
+}
+  
+.navButtonInteractionDisabled {
+    display: none;
+}
+  
+.caption {
+    display: table-caption;
+    margin-bottom: 0.5em;
+    padding: 0 0.5em;
+    text-align: left;
+}
+
+.caption > div {
+    font-weight: 500;
+    font-size: 1.15em;
+}
+  
+.DayPicker-days {
+    display: table-header-group;
+    margin-top: 1em;
+}
+
+.weekdays {
+    display: table-header-group;
+    margin-top: 1em;
+}
+
+.weekdaysRow {
+    display: table-row;
+}
+
+.weekday {
+    display: table-cell;
+    padding: 0.5em;
+    color: white;
+    text-align: center;
+    font-size: 0.875em;
+}
+
+.weekday abbr[title] {
+    border-bottom: none;
+    text-decoration: none;
+}
+  
+.body {
+    display: table-row-group;
+}
+  
+.week {
+    display: table-row;
+}
+  
+.day {
+    display: table-cell;
+    padding: 0.5em;
+    height: 40px;
+    width: 40px;
+    border: 2px solid black;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.interactionDisabled {
+    cursor: default;
+}
+  
+.interactionDisabled .day {
+    cursor: default;
+}
+  
+.footer {
+    padding-top: 0.5em;
+    text-align: center;
+}
+  
+.todayButton {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: white;
+    font-size: 0.875em;
+    cursor: pointer;
+}
+
+.todayButton:hover {
+    color: black;
+}
+
+.disabled:not(.outside) {
+    cursor: default;
+    background: gray;
+}
+
+.outside {
+    background: lightgray;
+    color: black;
+}
+
+.today {
+    background: black;
+}
+
+.navBar {
+    display: block;
+}
+
+.selected {
+    background: #1dbae0;
+}
+
+.disabledMonth {
+    display: none;
+}
+
+.selected:hover {
+    outline: none;
+}
+
+.day:not(.interactionDisabled):not(.selected):not(.disabled):hover {
+    background: #ce9bd7;
+}
+  
+.disabledWeek {
+    display: none;
+}
+
+.loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 2s linear infinite;
+    /* Chrome, Firefox 16+, IE 10+, Opera */
+  }
+  .loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #e74c3c;
+    -webkit-animation: spin 3s linear infinite;
+    /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 3s linear infinite;
+    /* Chrome, Firefox 16+, IE 10+, Opera */
+  }
+  .loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f9c922;
+    -webkit-animation: spin 1.5s linear infinite;
+    /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 1.5s linear infinite;
+    /* Chrome, Firefox 16+, IE 10+, Opera */
+  }
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(0deg);
+      /* IE 9 */
+      transform: rotate(0deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(360deg);
+      /* IE 9 */
+      transform: rotate(360deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+  }
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(0deg);
+      /* IE 9 */
+      transform: rotate(0deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(360deg);
+      /* IE 9 */
+      transform: rotate(360deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+  }

@@ -32,7 +32,7 @@ class PrivateRoute <T extends AuthRouteProps = AuthRouteProps> extends Component
 }
 
 const mapStateToProps = (state: RootState) => ({
-    isAuthenticated: !!state.user.id,
+    isAuthenticated: !!state.auth.token,
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

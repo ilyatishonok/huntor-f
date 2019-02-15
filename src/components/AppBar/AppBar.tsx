@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, ComponentType, ReactNode } from 'react';
 import classnames from 'classnames';
+import styled from 'styled-components';
 import { Theme } from '@material-ui/core/styles/createMuiTheme';
 import { withStyles, WithStyles, createStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,15 +9,17 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import LeftDrawer from './Drawer';
+import ToolBar from './ToolBar';
 const drawerWidth = 200;
 
 const styles = (theme: Theme) => createStyles({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
         }),
+        flexGrow: 1,
     },
     appBarShift: {
         marginLeft: drawerWidth,
@@ -35,6 +38,11 @@ const styles = (theme: Theme) => createStyles({
     },
 });
 
+const Content = styled.div`
+    flex-grow: 1;
+    padding: 10px;
+`;
+
 interface AppBarState {
     isDrawerOpen: boolean;
 }
@@ -42,6 +50,10 @@ interface AppBarState {
 interface AppBarProps extends WithStyles<typeof styles> {
     path: string,
     isAuthenticated: boolean;
+    wallet: {
+        value: number;
+    };
+    children: ReactNode;
 }
 
 class NAppBar extends Component<AppBarProps, AppBarState> {
@@ -55,11 +67,7 @@ class NAppBar extends Component<AppBarProps, AppBarState> {
         }));
     }
 
-    componentDidMount() {
-        console.log('hello');
-    }
-
-    render() {
+    renderAppBar() {
         const { classes } = this.props;
 
         if (!this.props.isAuthenticated) {
@@ -84,8 +92,15 @@ class NAppBar extends Component<AppBarProps, AppBarState> {
                             })} >
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" color="inherit" noWrap>
-                            Huntor
+                        <Typography style={{
+                            flexGrow: 1
+                        }} variant="h6" color="inherit" noWrap>
+                            Huntor10
+                        </Typography>
+                        <Typography style={{
+                            marginRight: '10px',
+                        }} variant="h6" color="inherit" noWrap>
+                            ₡{this.props.wallet.value}
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -97,6 +112,28 @@ class NAppBar extends Component<AppBarProps, AppBarState> {
                 />
             </React.Fragment>
         );
+    }
+
+    renderAuthenticated() {
+        return (
+            <React.Fragment>
+                {this.renderAppBar()}
+                <Content>
+                    <ToolBar />
+                    {this.props.children}
+                </Content>
+            </React.Fragment>
+        )
+    }
+
+    render() {
+        const { classes, isAuthenticated } = this.props;
+
+        if (isAuthenticated) {
+            return this.renderAuthenticated();
+        }
+
+        return this.props.children;
     }
 }
 

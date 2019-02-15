@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { ThunkDispatch } from 'redux-thunk';
 import Routes from '../../components/Routes/Routes';
 import { RootState } from '../../reducers';
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, undefined, Action
     loadApp: () => dispatch(loadApp()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Routes);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes));

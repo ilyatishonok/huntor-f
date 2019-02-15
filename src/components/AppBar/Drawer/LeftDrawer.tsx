@@ -79,16 +79,28 @@ const LeftDrawer = ({ classes, isDrawerOpen, onDrawerClose, path }: LeftDrawerPr
         </div>
         <Divider />
         <List>
-            <NavLink to="/courses">
-                <ListItem button selected={path === '/courses'}>
-                    <ListItemIcon><Book /></ListItemIcon>
-                    <ListItemText primary={'Courses'} />
-                </ListItem>
-            </NavLink>
             <NavLink to="/">
                 <ListItem button selected={path === '/'}>
                     <ListItemIcon><InboxIcon /></ListItemIcon>
-                    <ListItemText primary={'Main'} />
+                    <ListItemText primary={'Tutors'} />
+                </ListItem>
+            </NavLink>
+            <NavLink to="/student/tutors">
+                <ListItem button selected={path === '/student/tutors'}>
+                    <ListItemIcon><Book /></ListItemIcon>
+                    <ListItemText primary={'Bookings'} />
+                </ListItem>
+            </NavLink>
+            <NavLink to="/requests">
+                <ListItem button selected={path === '/requests'}>
+                    <ListItemIcon><Book /></ListItemIcon>
+                    <ListItemText primary={'Requests'} />
+                </ListItem>
+            </NavLink>
+            <NavLink to="/calendar">
+                <ListItem button selected={path === '/calendar'}>
+                    <ListItemIcon><Book /></ListItemIcon>
+                    <ListItemText primary={'Calendar'} />
                 </ListItem>
             </NavLink>
         </List>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { withFormik, FormikProps, FormikErrors } from 'formik';
-import { Dispatch } from 'redux';
+import { Action } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router'
 import styled from 'styled-components';
@@ -8,8 +9,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { onFormSubmit } from '../../../actions/loginFormActions';
-import { setUser } from '../../../actions/userActions';
-import { UserState } from '../../../store/types/user';
+import { authenticateUser } from '../../../actions/authActions';
+import { setAppState, loadApp } from '../../../actions/appActions';
+import { RootState } from '../../../reducers';
 
 export const Error = styled.div`
     color: red;
@@ -21,8 +23,10 @@ export interface SignInFormValues {
 }
 
 export interface SignInFormProps {
-    setUser: (user: UserState) => void;
+    authenticateUser: (token: string, refreshToken: string) => void;
+    setAppState: (isLoaded: boolean) => void;
     redirect: (path: string) => void;
+    loadApp: () => void;
 }
 
 class SignInForm extends React.Component<FormikProps<SignInFormValues> & SignInFormProps> {
@@ -75,9 +79,11 @@ class SignInForm extends React.Component<FormikProps<SignInFormValues> & SignInF
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<RootState, undefined, Action>) => ({
     redirect: (path: string) => dispatch(push(path)),
-    setUser: (user: UserState) => dispatch(setUser(user)),
+    setAppState: (isLoaded: boolean) => dispatch(setAppState(isLoaded)),
+    loadApp: () => dispatch(loadApp()),
+    authenticateUser: (token: string, refreshToken: string) => dispatch(authenticateUser(token, refreshToken)),
 })
 
 export default connect(

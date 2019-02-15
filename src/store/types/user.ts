@@ -3,12 +3,15 @@ export enum UserActionTypes {
 }
 
 export interface UserState {
-    id: string;
+    _id: string;
     firstname: string;
     lastname: string;
     email: string
     isAdmin: boolean;
     role: string;
+    wallet: {
+        value: number;
+    }
 }
 
 export interface SetUserAction {

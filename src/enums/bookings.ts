@@ -1,0 +1,6 @@
+export enum BookingsActionTypes {
+    FETCH_BOOKINGS_REQUEST = '@@booking/FETCH_BOOKINGS_REQUEST',
+    FETCH_BOOKINGS_SUCCESS = '@@booking/FETCH_BOOKINGS_SUCCESS',
+    FETCH_BOOKINGS_FAILURE = '@@booking/FETCH_BOOKINGS_FAILURE',
+    CHANGE_TAB = '@@booking/CHANGE_TAB',
+};

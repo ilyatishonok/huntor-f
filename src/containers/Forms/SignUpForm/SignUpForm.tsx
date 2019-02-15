@@ -3,7 +3,6 @@ import { reduxForm, InjectedFormProps, Field, WrappedFieldProps } from 'redux-fo
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { fetchSubjects } from '../../../actions/subjectsActions';
 import { fetchEducations } from '../../../actions/educationsActions';
 import { RootState } from '../../../reducers';
 import { ISubject, SubjectsActions } from '../../../store/types/subjects';

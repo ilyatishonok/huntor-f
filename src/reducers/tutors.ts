@@ -1,26 +1,32 @@
-import {TutorsState, TutorsActions, TutorsActionTypes } from '../store/types/tutors';
+import { TutorsActionTypes } from "../enums/tutors";
+import { TutorsActions } from "../actions/tutorsActions";
+
+export interface TutorsState {
+    items: string[];
+    error: string;
+    didInvalidate: boolean;
+}
 
 const initialState = {
-    data: [],
-    isFetching: false,
+    items: [],
     error: '',
-    page: 0,
+    didInvalidate: false,
 };
 
-const coursesReducer = (state: TutorsState = initialState, action: TutorsActions) => {
+const tutorsReducer = (state: TutorsState = initialState, action: TutorsActions) => {
     switch (action.type) {
         case TutorsActionTypes.FETCH_TUTORS_REQUEST:
-            return { ...state, isFetching: true, error: '', page: 0 };
+            return { ...state, didInvalidate: false, error: '' };
         
-        case TutorsActionTypes.FETCH_TUTORS_REQUEST_SUCCESS:
-            return { ...state, isFetching: false, data: action.payload };
+        case TutorsActionTypes.FETCH_TUTORS_SUCCESS:
+            return { ...state, items: action.payload.tutors };
         
-        case TutorsActionTypes.FETCH_TUTORS_REQUEST_FAILURE:
-            return { ...state, isFetching: false, error: action.payload };
+        case TutorsActionTypes.FETCH_TUTORS_FAILURE:
+            return { ...state, error: action.payload };
 
         default:
             return state;
     }
 }
 
-export default coursesReducer;
+export default tutorsReducer;
